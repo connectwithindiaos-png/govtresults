@@ -18,7 +18,7 @@ export default function SEO({
   const pageTitle = title ? `${title} | ${siteName}` : defaultTitle;
   const desc = description || defaultDescription;
   const url = canonical || siteUrl;
-  const image = ogImage || `${siteUrl}/og-image.png`;
+  const image = ogImage || `${siteUrl}/og-image.svg`;
 
   const breadcrumbJson = breadcrumbs?.length ? {
     '@context': 'https://schema.org',
@@ -37,8 +37,8 @@ export default function SEO({
     name: siteName,
     url: siteUrl,
     description: defaultDescription,
-    about: 'Government jobs in India, Sarkari naukri, SSC, UPSC, banking jobs, railway recruitment, admit cards, answer keys, Sarkari results',
-    keywords: 'government jobs, sarkari naukri, ssc cgl, upsc, ibps po, rrb ntpc, railway jobs, banking jobs, defence jobs, teaching jobs, state government jobs, admit card, answer key, sarkari result, india gov jobs',
+    about: 'Government jobs in India, Sarkari naukri, SSC CGL, SSC CHSL, UPSC, banking jobs, railway recruitment, RRB NTPC, police recruitment, admit cards, answer keys, Sarkari results, teaching jobs, defence jobs',
+    keywords: 'government jobs, sarkari naukri, ssc cgl, ssc chsl, upsc, ibps po, rrb ntpc, railway jobs, banking jobs, police jobs, defence jobs, teaching jobs, ctet, state government jobs, psu jobs, admit card, answer key, sarkari result, india gov jobs',
     inLanguage: 'hi-IN',
     audience: { '@type': 'Audience', audienceType: 'Government job aspirants in India' },
     potentialAction: {
@@ -179,7 +179,7 @@ export default function SEO({
       <title>{pageTitle}</title>
       <meta name="description" content={desc} />
       <meta name="title" content={pageTitle} />
-      <meta name="keywords" content="government jobs 2026, sarkari naukri, ssc cgl, upsc civil services, ibps po, rrb ntpc, sbi clerk, railway jobs, banking jobs, defence jobs, teaching jobs, state government jobs, admit card 2026, answer key 2026, sarkari result, latest govt jobs, exam form fill online, ssc form, upsc application, india government jobs, central government jobs, police recruitment, army jobs, navy recruitment, air force jobs, 10th pass government jobs, 12th pass government jobs, graduate government jobs" />
+      <meta name="keywords" content="government jobs 2026, sarkari naukri, ssc cgl, ssc chsl, ssc gd constable, ssc mts, ssc cpo, upsc civil services, upsc nda, upsc cds, ibps po, ibps clerk, ibps rrb, sbi po, sbi clerk, rbi grade b, rbi assistant, rrb ntpc, rrb group d, rrb alp, railway jobs, banking jobs, defence jobs, teaching jobs, ctet, uptet, dsssb, kvs, nvs, police recruitment, up police, delhi police, crpf, bsf, central government jobs, state government jobs, psu jobs, ongc, iocl, ntpc, coal india, admit card 2026, answer key 2026, sarkari result, latest govt jobs, exam form fill online, ssc form, upsc application, india government jobs, 10th pass government jobs, 12th pass government jobs, graduate government jobs, engineering jobs, diploma jobs, iti jobs" />
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
       <meta name="revisit-after" content="1 day" />
       <meta name="language" content="Hindi, English" />
