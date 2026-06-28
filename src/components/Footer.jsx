@@ -11,21 +11,21 @@ const quickLinks = [
 ];
 
 const resources = [
-  { label: 'Apply Online', href: '#' },
-  { label: 'Download Admit Card', href: '#' },
-  { label: 'Check Result', href: '#' },
-  { label: 'Syllabus & Pattern', href: '#' },
-  { label: 'Previous Papers', href: '#' },
-  { label: 'Answer Key Download', href: '#' },
+  { label: 'Latest Jobs', href: '/jobs/latest-jobs' },
+  { label: 'Download Admit Card', href: '/jobs/admit-cards' },
+  { label: 'Check Result', href: '/jobs/results' },
+  { label: 'Syllabus & Pattern', href: '/jobs/latest-jobs?q=syllabus' },
+  { label: 'Previous Papers', href: '/jobs/latest-jobs?q=papers' },
+  { label: 'Answer Key Download', href: '/jobs/answer-keys' },
 ];
 
 const usefulLinks = [
-  { label: 'About Us', href: '#' },
-  { label: 'Contact Us', href: '#' },
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms of Service', href: '#' },
-  { label: 'Disclaimer', href: '#' },
-  { label: 'Sitemap', href: '#' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact Us', href: '/contact' },
+  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Terms of Service', href: '/terms' },
+  { label: 'Disclaimer', href: '/disclaimer' },
+  { label: 'Sitemap', href: '/sitemap.xml' },
 ];
 
 export default function Footer() {

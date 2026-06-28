@@ -1,24 +1,6 @@
 import { Link } from 'react-router-dom';
 import NotificationTicker from './NotificationTicker';
-
-const months = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
-
-function extractDate(item) {
-  if (item.posted_at) return item.posted_at;
-  const m = (item.content_html || '').match(/Updated:?\s*(\d{1,2}\s+\w+\s+\d{4})/i);
-  return m ? m[1] : '';
-}
-
-function getTag(dateStr) {
-  if (!dateStr) return null;
-  const parts = dateStr.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/);
-  if (!parts) return null;
-  const d = new Date(+parts[3], months[parts[2]], +parts[1]);
-  const diff = (Date.now() - d.getTime()) / 86400000;
-  if (diff < 3) return { label: 'New', cls: 'tag-new' };
-  if (diff < 8) return { label: 'Hot', cls: 'tag-hot' };
-  return null;
-}
+import { extractDate, getTag } from '../utils/dateHelpers';
 
 export default function HeroSection({ data, searchQuery, onSearchChange }) {
   const govtJobs = data?.latest_jobs || [];
@@ -90,11 +72,11 @@ export default function HeroSection({ data, searchQuery, onSearchChange }) {
                       <div className="flex items-start gap-1.5">
                         <span className="text-[10px] text-gray-400 font-mono w-4 shrink-0">{i + 1}.</span>
                         <div className="min-w-0 flex-1">
-                          <a href={item.original_url || '#'} target="_blank" rel="noopener noreferrer"
+                          {item.original_url ? <a href={item.original_url} target="_blank" rel="noopener noreferrer"
                             className="text-[13px] font-bold text-[#00C]"
                           >
-                            {item.title}
-                          </a>
+                          {item.title}
+                        </a> : <span className="text-[13px] font-bold text-gray-700">{item.title}</span>}
                           {tag && <span className={`ml-1 text-[11px] ${tag.cls}`}> {tag.label} </span>}
                           <div className="text-[10px] text-gray-500">
                             {[item.source, loc, dateStr].filter(Boolean).join(' | ')}

@@ -14,7 +14,7 @@ export function useFetchJobs() {
   const mountedRef = useRef(true);
 
   useEffect(() => {
-    return () => { mountedRef.current = true; };
+    return () => { mountedRef.current = false; };
   }, []);
 
   const fetchData = async () => {

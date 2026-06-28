@@ -2,6 +2,21 @@ export default function NotificationTicker({ items = [] }) {
   if (!items.length) return null;
   const top10 = items.slice(0, 10);
 
+  const renderItem = (item, key) => (
+    <span key={key} className="inline-flex items-center gap-2">
+      <span className="w-1 h-1 bg-white/60 shrink-0" />
+      {item.original_url ? (
+        <a href={item.original_url} target="_blank" rel="noopener noreferrer"
+          className="truncate max-w-[260px] inline-block text-white"
+        >
+          {item.title}
+        </a>
+      ) : (
+        <span className="truncate max-w-[260px] inline-block text-white">{item.title}</span>
+      )}
+    </span>
+  );
+
   return (
     <div aria-live="polite" aria-label="Latest job notifications ticker" className="bg-[#C24100]">
       <div className="flex items-stretch">
@@ -11,20 +26,10 @@ export default function NotificationTicker({ items = [] }) {
         <div className="flex-1 overflow-hidden py-2 px-3">
           <div className="animate-ticker flex whitespace-nowrap">
             <span className="text-white text-[12px] font-medium flex items-center gap-6 shrink-0">
-              {top10.map((item, i) => (
-                <span key={i} className="inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white/60 shrink-0" />
-                  <span className="truncate max-w-[260px] inline-block">{item.title}</span>
-                </span>
-              ))}
+              {top10.map((item, i) => renderItem(item, i))}
             </span>
             <span className="text-white text-[12px] font-medium flex items-center gap-6 shrink-0">
-              {top10.map((item, i) => (
-                <span key={`dup-${i}`} className="inline-flex items-center gap-2">
-                  <span className="w-1 h-1 bg-white/60 shrink-0" />
-                  <span className="truncate max-w-[260px] inline-block">{item.title}</span>
-                </span>
-              ))}
+              {top10.map((item, i) => renderItem(item, `dup-${i}`))}
             </span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CategoryTabs from '../components/CategoryTabs';
@@ -26,14 +26,24 @@ const tabLabels = {
 export default function JobsPage({ data, loading, error, onRetry, searchQuery, onSearchChange }) {
   const { category } = useParams();
   const location = useLocation();
-  const resolvedTab = slugToKey[category] || 'latest_jobs';
-  const label = tabLabels[resolvedTab] || 'Jobs';
+  const resolvedTab = slugToKey[category];
+  const label = resolvedTab ? (tabLabels[resolvedTab] || 'Jobs') : '';
 
   useEffect(() => {
     const p = new URLSearchParams(location.search);
     const q = p.get('q');
     if (q) onSearchChange(q);
   }, [location.search]);
+
+  if (!resolvedTab) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+        <h1 className="text-2xl font-bold text-gray-900 mb-3">404 - Category Not Found</h1>
+        <p className="text-sm text-gray-600 mb-4">Invalid job category: {category}</p>
+        <Link to="/" className="bg-gray-800 text-white px-4 py-2 text-sm font-bold">Go to Home</Link>
+      </div>
+    );
+  }
 
   const allJobs = useMemo(() => {
     if (!data) return [];

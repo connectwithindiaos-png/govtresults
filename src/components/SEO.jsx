@@ -102,7 +102,7 @@ export default function SEO({
         } : undefined,
         employmentType: 'FULL_TIME',
         validThrough: job.last_date || '',
-        url: job.link || siteUrl,
+        url: job.original_url || siteUrl,
       },
     })),
   } : null;
@@ -185,7 +185,7 @@ export default function SEO({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:image:alt" content={desc} />
+      <meta name="twitter:image:alt" content={fullTitle} />
       <meta name="twitter:card" content="summary_large_image" />
 
       {schemas.map((schema, i) => (

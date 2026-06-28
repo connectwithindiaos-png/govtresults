@@ -29,6 +29,7 @@ const examCategories = [
   },
   {
     title: 'Banking Jobs',
+    to: '/jobs/latest-jobs?q=Banking',
     items: [
       'IBPS PO 2026 - Probationary Officer',
       'IBPS Clerk 2026 - Clerical Cadre',
@@ -42,6 +43,7 @@ const examCategories = [
   },
   {
     title: 'Railway Jobs',
+    to: '/jobs/latest-jobs?q=Railway',
     items: [
       'RRB NTPC 2026 - Non Technical Popular Categories',
       'RRB Group D 2026 - Level 1 Posts',
@@ -55,6 +57,7 @@ const examCategories = [
   },
   {
     title: 'Teaching Jobs',
+    to: '/jobs/latest-jobs?q=Teaching',
     items: [
       'CTET 2026 - Central Teacher Eligibility Test',
       'UPTET 2026 - Uttar Pradesh Teacher Eligibility',
@@ -68,6 +71,7 @@ const examCategories = [
   },
   {
     title: 'Defence Jobs',
+    to: '/jobs/latest-jobs?q=Defence',
     items: [
       'Indian Army Soldier 2026 Recruitment',
       'Indian Navy SSR 2026 - Senior Secondary',
@@ -81,6 +85,7 @@ const examCategories = [
   },
   {
     title: 'State Govt Jobs',
+    to: '/jobs/latest-jobs?q=State+Govt',
     items: [
       'UPPSC 2026 - Uttar Pradesh PSC',
       'BPSC 2026 - Bihar Public Service Commission',
@@ -107,6 +112,7 @@ const examCategories = [
   },
   {
     title: 'PSU Jobs',
+    to: '/jobs/latest-jobs?q=PSU',
     items: [
       'ONGC 2026 Recruitment - Oil & Natural Gas Corp',
       'IOCL 2026 - Indian Oil Corporation',
@@ -168,7 +174,7 @@ export default function GovtInfoSection() {
                   </li>
                 ))}
               </ul>
-              <Link to="/jobs/latest-jobs" className="text-[9px] font-semibold text-accent mt-1.5 hover:underline inline-block">
+              <Link to={cat.to} className="text-[9px] font-semibold text-accent mt-1.5 inline-block">
                 View full list &rarr;
               </Link>
             </div>

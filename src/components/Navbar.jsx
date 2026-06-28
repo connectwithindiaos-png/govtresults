@@ -17,9 +17,9 @@ const quickLinks = [
   { label: 'Railway', href: '/jobs/latest-jobs?q=Railway' },
   { label: 'Banking', href: '/jobs/latest-jobs?q=Bank' },
   { label: 'Police', href: '/jobs/latest-jobs?q=Police' },
-  { label: 'Syllabus', href: '#' },
-  { label: 'Previous Papers', href: '#' },
-  { label: 'Exam Calendar', href: '#' },
+  { label: 'Syllabus', href: '/jobs/latest-jobs?q=syllabus' },
+  { label: 'Previous Papers', href: '/jobs/latest-jobs?q=papers' },
+  { label: 'Exam Calendar', href: '/jobs/latest-jobs' },
 ];
 
 export default function Navbar() {
