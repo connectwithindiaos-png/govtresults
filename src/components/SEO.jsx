@@ -30,7 +30,7 @@ export default function SEO({
   const fullTitle = pageTitle.includes(siteName) ? pageTitle : `${pageTitle} | ${siteName}`;
   const desc = description || tabMetaData?.desc || defaultDescription;
   const url = canonical ? `${siteUrl}${canonical}` : siteUrl;
-  const image = ogImage || `${siteUrl}/api/og`;
+  const image = ogImage || `${siteUrl}/og-image.svg`;
 
   const breadcrumbJson = breadcrumbs?.length ? {
     '@context': 'https://schema.org',

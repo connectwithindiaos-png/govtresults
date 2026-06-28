@@ -1,20 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#1A1A2E"/>
-  <rect y="0" width="1200" height="6" fill="url(#tricolor)"/>
   <defs>
-    <linearGradient id="tricolor" x1="0" y1="0" x2="1200" y2="0">
-      <stop offset="0%" stop-color="#FF9933"/>
-      <stop offset="33%" stop-color="#FF9933"/>
-      <stop offset="33%" stop-color="white"/>
-      <stop offset="66%" stop-color="white"/>
-      <stop offset="66%" stop-color="#138808"/>
-      <stop offset="100%" stop-color="#138808"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1A2E"/>
+      <stop offset="100%" style="stop-color:#0F0F1A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E85D04"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="tricolor" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF9933"/>
+      <stop offset="33%" style="stop-color:#FF9933"/>
+      <stop offset="33%" style="stop-color:#FFFFFF"/>
+      <stop offset="66%" style="stop-color:#FFFFFF"/>
+      <stop offset="66%" style="stop-color:#138808"/>
+      <stop offset="100%" style="stop-color:#138808"/>
     </linearGradient>
   </defs>
-  <rect x="540" y="170" width="120" height="120" rx="20" fill="#E85D04"/>
-  <text x="600" y="258" font-family="Arial,sans-serif" font-size="72" font-weight="700" fill="white" text-anchor="middle">SR</text>
-  <text x="600" y="340" font-family="Arial,sans-serif" font-size="52" font-weight="700" fill="white" text-anchor="middle">GovtJobsIndia.online</text>
-  <text x="600" y="390" font-family="Arial,sans-serif" font-size="24" fill="#E85D04" text-anchor="middle">India's #1 Government Job Portal</text>
-  <text x="600" y="440" font-family="Arial,sans-serif" font-size="18" fill="#888" text-anchor="middle">SSC CGL | UPSC | Banking | Railway | Defence | Police | Teaching | State Govt Jobs</text>
-  <text x="600" y="490" font-family="Arial,sans-serif" font-size="16" fill="#666" text-anchor="middle">Get Latest Sarkari Results, Admit Cards & Answer Keys — Trusted by 4.8 Crore+ Aspirants</text>
+  <rect width="1200" height="630" fill="url(#bg)" rx="0"/>
+  <rect y="0" width="1200" height="6" fill="url(#tricolor)"/>
+  <rect y="624" width="1200" height="6" fill="url(#tricolor)"/>
+  <circle cx="600" cy="315" r="240" fill="none" stroke="#E85D04" stroke-opacity="0.08" stroke-width="120"/>
+  <text x="600" y="210" text-anchor="middle" font-family="sans-serif" font-size="72" font-weight="800" fill="#FFFFFF">
+    सरकारी नौकरी
+  </text>
+  <text x="600" y="280" text-anchor="middle" font-family="sans-serif" font-size="36" font-weight="700" fill="#E85D04">
+    GovtJobsIndia.online
+  </text>
+  <text x="600" y="340" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#AAAAAA">
+    India's #1 Government Job Portal
+  </text>
+  <text x="600" y="400" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#777777">
+    SSC CGL | UPSC | Banking | Railway | Defence | Police | Teaching | State Govt Jobs
+  </text>
+  <rect x="420" y="430" width="360" height="1" fill="#333333"/>
+  <text x="600" y="470" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#555555">
+    Latest Jobs · Sarkari Results · Admit Cards · Answer Keys
+  </text>
+  <text x="600" y="520" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#444444">
+    Trusted by millions of government job aspirants
+  </text>
 </svg>
