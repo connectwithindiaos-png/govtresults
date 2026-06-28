@@ -1,0 +1,4 @@
+# GovtJobsIndia.online - Robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://govtjobsindia.online/sitemap.xml

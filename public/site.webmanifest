@@ -1,0 +1,22 @@
+{
+  "name": "GovtJobsIndia.online - Government Job Portal",
+  "short_name": "GovtJobsIndia",
+  "description": "India's #1 platform for government job notifications, results, admit cards & answer keys.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F5F0",
+  "theme_color": "#1A1A2E",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
