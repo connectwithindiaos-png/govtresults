@@ -1,47 +1,69 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const DIRECT_URL = 'https://abhishek-kd-43.github.io/jobs/data.json';
-const PROXY_FALLBACK = 'https://corsproxy.io/?' + DIRECT_URL;
 
 function getPrimaryUrl() {
-  return import.meta.env.DEV ? DIRECT_URL : '/api/jobs';
+  return import.meta.env.DEV ? '/api/jobs-data' : '/api/jobs';
 }
 
 export function useFetchJobs() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    return () => { mountedRef.current = true; };
+  }, []);
 
   const fetchData = async () => {
     setLoading(true);
     setError(null);
+    setProgress(5);
 
-    const urlsToTry = [getPrimaryUrl()];
-    if (!import.meta.env.DEV) urlsToTry.push(DIRECT_URL);
-    urlsToTry.push(PROXY_FALLBACK);
+    const urlsToTry = [getPrimaryUrl(), DIRECT_URL];
 
     for (const url of urlsToTry) {
+      if (url === DIRECT_URL) setProgress(50);
+      else setProgress(10);
+
       try {
-        const res = await fetch(url);
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 30000);
+
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeout);
+
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        setProgress(url === DIRECT_URL ? 80 : 60);
+
         const json = await res.json();
         if (json && typeof json === 'object' && Object.keys(json).length) {
-          setData(json);
-          setLoading(false);
+          if (mountedRef.current) {
+            setData(json);
+            setLoading(false);
+            setProgress(100);
+            setTimeout(() => { if (mountedRef.current) setProgress(null); }, 500);
+          }
           return;
         }
-      } catch {
-        // try next URL
+      } catch (err) {
+        setProgress(url === DIRECT_URL ? 90 : 40);
       }
     }
 
-    setError('Failed to load job data. Please try again.');
-    setLoading(false);
+    if (mountedRef.current) {
+      setError('Failed to load job data. Please try again.');
+      setLoading(false);
+      setProgress(null);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  return { data, loading, error, refetch: fetchData };
+  return { data, loading, error, progress, refetch: fetchData };
 }

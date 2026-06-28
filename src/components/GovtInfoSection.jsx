@@ -1,11 +1,8 @@
-import { ExternalLink, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const examCategories = [
   {
     title: 'SSC Exams',
-    color: 'text-accent',
-    border: 'border-accent',
-    bg: 'bg-accent/5',
     items: [
       'SSC CGL 2026 - Combined Graduate Level Exam',
       'SSC CHSL 2026 - 10+2 Higher Secondary Level',
@@ -19,9 +16,6 @@ const examCategories = [
   },
   {
     title: 'UPSC Exams',
-    color: 'text-blue-600',
-    border: 'border-blue-600',
-    bg: 'bg-blue-50',
     items: [
       'UPSC Civil Services 2026 - IAS, IPS, IFS',
       'UPSC CAPF 2026 - Central Armed Police Forces',
@@ -35,9 +29,6 @@ const examCategories = [
   },
   {
     title: 'Banking Jobs',
-    color: 'text-purple-600',
-    border: 'border-purple-600',
-    bg: 'bg-purple-50',
     items: [
       'IBPS PO 2026 - Probationary Officer',
       'IBPS Clerk 2026 - Clerical Cadre',
@@ -51,9 +42,6 @@ const examCategories = [
   },
   {
     title: 'Railway Jobs',
-    color: 'text-emerald-600',
-    border: 'border-emerald-600',
-    bg: 'bg-emerald-50',
     items: [
       'RRB NTPC 2026 - Non Technical Popular Categories',
       'RRB Group D 2026 - Level 1 Posts',
@@ -67,9 +55,6 @@ const examCategories = [
   },
   {
     title: 'Teaching Jobs',
-    color: 'text-rose-600',
-    border: 'border-rose-600',
-    bg: 'bg-rose-50',
     items: [
       'CTET 2026 - Central Teacher Eligibility Test',
       'UPTET 2026 - Uttar Pradesh Teacher Eligibility',
@@ -83,9 +68,6 @@ const examCategories = [
   },
   {
     title: 'Defence Jobs',
-    color: 'text-cyan-600',
-    border: 'border-cyan-600',
-    bg: 'bg-cyan-50',
     items: [
       'Indian Army Soldier 2026 Recruitment',
       'Indian Navy SSR 2026 - Senior Secondary',
@@ -99,9 +81,6 @@ const examCategories = [
   },
   {
     title: 'State Govt Jobs',
-    color: 'text-indigo-600',
-    border: 'border-indigo-600',
-    bg: 'bg-indigo-50',
     items: [
       'UPPSC 2026 - Uttar Pradesh PSC',
       'BPSC 2026 - Bihar Public Service Commission',
@@ -115,9 +94,6 @@ const examCategories = [
   },
   {
     title: 'Police & Security',
-    color: 'text-yellow-600',
-    border: 'border-yellow-600',
-    bg: 'bg-yellow-50',
     items: [
       'UP Police Constable 2026 Recruitment',
       'UP Police SI 2026 - Sub Inspector',
@@ -131,9 +107,6 @@ const examCategories = [
   },
   {
     title: 'PSU Jobs',
-    color: 'text-teal-600',
-    border: 'border-teal-600',
-    bg: 'bg-teal-50',
     items: [
       'ONGC 2026 Recruitment - Oil & Natural Gas Corp',
       'IOCL 2026 - Indian Oil Corporation',
@@ -147,9 +120,6 @@ const examCategories = [
   },
   {
     title: 'Other Exams',
-    color: 'text-amber-600',
-    border: 'border-amber-600',
-    bg: 'bg-amber-50',
     items: [
       'FCI 2026 - Food Corporation of India',
       'ESIC 2026 - Employees State Insurance',
@@ -186,27 +156,26 @@ export default function GovtInfoSection() {
           </div>
         </div>
 
-        {/* Exam grid */}
+        {/* Exam grid - plain cards, no icons, no colored borders */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {examCategories.map((cat) => (
-            <div key={cat.title} className={`card border-l-4 ${cat.border} ${cat.bg} p-3`}>
-              <h3 className={`text-xs font-extrabold ${cat.color} font-[Poppins] mb-1.5`}>{cat.title}</h3>
+            <div key={cat.title} className="border border-gray-200 p-3">
+              <h3 className="text-xs font-extrabold text-accent mb-1.5">{cat.title}</h3>
               <ul className="space-y-0.5">
                 {cat.items.slice(0, 5).map((item) => (
-                  <li key={item} className="text-[10px] text-gray-600 flex items-start gap-1">
-                    <ChevronRight size={8} className="text-gray-300 mt-0.5 shrink-0" />
-                    <span>{item}</span>
+                  <li key={item} className="text-[10px] text-gray-600">
+                    {item}
                   </li>
                 ))}
               </ul>
-              <a href="#jobs" className={`inline-flex items-center gap-1 text-[9px] font-semibold ${cat.color} mt-1.5 hover:underline`}>
-                View full list <ExternalLink size={8} />
-              </a>
+              <Link to="/jobs/latest-jobs" className="text-[9px] font-semibold text-accent mt-1.5 hover:underline inline-block">
+                View full list &rarr;
+              </Link>
             </div>
           ))}
         </div>
 
-        {/* Bottom SEO block - expanded with trending keywords */}
+        {/* Bottom SEO block */}
         <div className="mt-8 max-w-5xl text-[12px] text-gray-500 leading-relaxed space-y-3">
           <p>
             <strong className="text-gray-700">Sarkari Naukri 2026:</strong> Stay updated with the latest
@@ -216,85 +185,35 @@ export default function GovtInfoSection() {
             <strong>RRB NTPC 2026</strong>, <strong>RRB Group D 2026</strong>,
             <strong>UPSC NDA 2026</strong>, <strong>CTET 2026</strong>,
             <strong>Indian Army Soldier 2026</strong>, <strong>UP Police Constable 2026</strong>,
-            and hundreds of other <strong>government job vacancies</strong>. Our platform provides direct links to
-            <strong>online application forms</strong>, <strong>admit card downloads</strong>,
-            <strong>answer key PDFs</strong>, and <strong>final results</strong> for all
-            <strong>central and state government exams</strong> including <strong>SSC</strong>,
-            <strong>UPSC</strong>, <strong>IBPS</strong>, <strong>SBI</strong>, <strong>RBI</strong>,
-            <strong>RRB</strong>, <strong>CTET</strong>, <strong>DSSSB</strong>, <strong>KVS</strong>,
-            <strong>NVS</strong>, <strong>FCI</strong>, <strong>ESIC</strong>, <strong>ONGC</strong>,
-            <strong>IOCL</strong>, <strong>NTPC</strong>, <strong>BHEL</strong>, <strong>GAIL</strong>,
-            and all <strong>state PSC</strong> and <strong>police recruitment</strong> boards.
+            and hundreds of other <strong>government job vacancies</strong>.
           </p>
           <p>
             <strong className="text-gray-700">Exam Form Fill Online 2026:</strong> Apply online for
             <strong>SSC form fill online</strong>, <strong>UPSC application form</strong>,
             <strong>bank exam online application</strong>, <strong>railway recruitment form</strong>,
             <strong>police recruitment form</strong>, <strong>teaching job application</strong>,
-            and <strong>state PSC exam forms</strong>. Get direct application links, last date reminders,
-            application fee details, eligibility criteria, age limit, educational qualification,
-            physical standards, and exam pattern information for all
-            <strong>government recruitment 2026</strong> notifications. We cover
-            <strong>central government jobs</strong>, <strong>state government jobs</strong>,
-            <strong>PSU recruitment</strong>, <strong>defence jobs</strong>, <strong>railway jobs</strong>,
-            <strong>banking jobs</strong>, <strong>teaching jobs</strong>, and
-            <strong>police jobs</strong> across India.
+            and <strong>state PSC exam forms</strong>.
           </p>
           <p>
             <strong className="text-gray-700">Admit Card & Answer Key 2026:</strong> Download your
             <strong>SSC admit card 2026</strong>, <strong>UPSC admit card</strong>,
             <strong>bank exam hall ticket</strong>, <strong>railway admit card</strong>,
             <strong>police exam call letter</strong>, and <strong>state exam admit card</strong>.
-            Check <strong>answer keys</strong> for <strong>SSC CGL answer key</strong>,
-            <strong>UPSC prelims answer key</strong>, <strong>IBPS PO answer key</strong>,
-            <strong>RRB answer key</strong>, <strong>CTET answer key</strong>,
-            <strong>UPPSC answer key</strong>, <strong>BPSC answer key</strong>, and more.
-            Get <strong>Sarkari result</strong> updates for all completed examinations including
-            <strong>SSC result</strong>, <strong>UPSC result</strong>, <strong>IBPS result</strong>,
-            <strong>railway result</strong>, <strong>bank result</strong>, and
-            <strong>state PSC result</strong> notifications as soon as they are announced.
           </p>
           <p>
             <strong className="text-gray-700">Government Jobs by Qualification 2026:</strong> Find
             <strong>10th pass government jobs</strong>, <strong>12th pass government jobs</strong>,
             <strong>graduate government jobs</strong>, <strong>postgraduate government jobs</strong>,
             <strong>diploma government jobs</strong>, <strong>ITI government jobs</strong>,
-            and <strong>engineering government jobs</strong>. Whether you are looking for
-            <strong>Sarkari Naukri in Delhi</strong>, <strong>Mumbai</strong>, <strong>Lucknow</strong>,
-            <strong>Patna</strong>, <strong>Jaipur</strong>, <strong>Bhopal</strong>,
-            <strong>Chandigarh</strong>, or any other city, we provide <strong>latest govt job alerts</strong>
-            for all states: <strong>Uttar Pradesh</strong>, <strong>Bihar</strong>,
-            <strong>Madhya Pradesh</strong>, <strong>Rajasthan</strong>, <strong>Maharashtra</strong>,
-            <strong>Gujarat</strong>, <strong>West Bengal</strong>, <strong>Tamil Nadu</strong>,
-            <strong>Karnataka</strong>, <strong>Telangana</strong>, <strong>Andhra Pradesh</strong>,
-            <strong>Punjab</strong>, <strong>Haryana</strong>, <strong>Odisha</strong>,
-            <strong>Assam</strong>, <strong>Jharkhand</strong>, <strong>Chhattisgarh</strong>,
-            <strong>Uttarakhand</strong>, <strong>Himachal Pradesh</strong>, <strong>Jammu & Kashmir</strong>,
-            and <strong>Kerala</strong>.
+            and <strong>engineering government jobs</strong>.
           </p>
           <p>
             <strong className="text-gray-700">Popular Government Exams 2026:</strong> Prepare for
-            <strong>SSC CGL</strong> (Combined Graduate Level), <strong>SSC CHSL</strong> (10+2),
-            <strong>SSC GD Constable</strong>, <strong>SSC MTS</strong>, <strong>SSC CPO</strong>,
-            <strong>SSC Stenographer</strong>, <strong>SSC JE</strong>, <strong>UPSC Civil Services</strong>
-            (IAS, IPS, IFS), <strong>UPSC NDA</strong>, <strong>UPSC CDS</strong>,
-            <strong>UPSC CAPF</strong>, <strong>IBPS PO</strong>, <strong>IBPS Clerk</strong>,
-            <strong>IBPS RRB</strong>, <strong>SBI PO</strong>, <strong>SBI Clerk</strong>,
-            <strong>RBI Grade B</strong>, <strong>RBI Assistant</strong>, <strong>RRB NTPC</strong>,
-            <strong>RRB Group D</strong>, <strong>RRB ALP</strong>, <strong>RRB JE</strong>,
-            <strong>CTET</strong>, <strong>UPTET</strong>, <strong>DSSSB</strong>,
-            <strong>KVS</strong>, <strong>NVS</strong>, <strong>Indian Army</strong>,
-            <strong>Indian Navy</strong>, <strong>Indian Air Force</strong>,
-            <strong>UP Police</strong>, <strong>Delhi Police</strong>,
-            <strong>CRPF</strong>, <strong>BSF</strong>, <strong>CISF</strong>,
-            <strong>UPPSC</strong>, <strong>BPSC</strong>, <strong>MPPSC</strong>,
-            <strong>RPSC</strong>, <strong>UKPSC</strong>, <strong>WBPSC</strong>,
-            <strong>GPSC</strong>, <strong>MPSC</strong>, <strong>FCI</strong>,
-            <strong>ESIC</strong>, <strong>NTA UGC NET</strong>,
-            <strong>ONGC</strong>, <strong>IOCL</strong>, <strong>NTPC</strong>,
-            <strong>BHEL</strong>, <strong>SAIL</strong>, <strong>GAIL</strong>,
-            <strong>Coal India</strong>, <strong>LIC</strong>, <strong>ISRO</strong>,
-            <strong>DRDO</strong>, <strong>BARC</strong>, and <strong>AIIMS</strong> recruitment.
+            <strong>SSC CGL</strong>, <strong>SSC CHSL</strong>, <strong>SSC GD Constable</strong>,
+            <strong>SSC MTS</strong>, <strong>SSC CPO</strong>, <strong>UPSC Civil Services</strong>,
+            <strong>IBPS PO</strong>, <strong>IBPS Clerk</strong>, <strong>RRB NTPC</strong>,
+            <strong>RRB Group D</strong>, <strong>CTET</strong>, <strong>Indian Army</strong>,
+            and hundreds more government recruitment exams.
           </p>
         </div>
       </div>

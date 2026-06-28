@@ -3,7 +3,16 @@ import { Helmet } from 'react-helmet-async';
 const siteUrl = 'https://govtjobsindia.online';
 const siteName = 'GovtJobsIndia.online';
 const defaultDescription = 'Get Latest Government Jobs 2026, Sarkari Results, Admit Cards & Answer Keys at One Place. SSC CGL, UPSC, IBPS PO, RRB NTPC, Railway, Banking, Defence & State Govt Vacancies. Trusted by 4.8 Crore+ aspirants.';
-const defaultTitle = 'GovtJobsIndia.online - India\'s #1 Government Job Portal | Sarkari Naukri, Results, Admit Cards';
+const defaultTitle = "GovtJobsIndia.online - India's #1 Government Job Portal | Sarkari Naukri, Results, Admit Cards";
+
+const tabMeta = {
+  latest_jobs: { title: 'Latest Govt Jobs 2026 - Sarkari Naukri, SSC CGL, UPSC, Banking, Railway Recruitment', desc: 'Find latest government job notifications 2026 - Sarkari naukri vacancies from SSC CGL, UPSC, IBPS PO, SBI Clerk, RRB NTPC, Railway, Defence, Police & all state govt departments. Apply online.' },
+  results: { title: 'Sarkari Results 2026 - SSC, UPSC, Railway, Banking, State Exam Results', desc: 'Check Sarkari result 2026 for SSC CGL, UPSC Civil Services, IBPS PO, RRB NTPC, CTET, state PSC & all government exams. Direct official result links updated daily.' },
+  admit_cards: { title: 'Admit Cards 2026 - Download Sarkari Exam Hall Ticket, SSC, UPSC, Railway', desc: 'Download admit cards 2026 for SSC CGL, UPSC, IBPS, RRB NTPC, CTET, state exams & all government recruitment. Direct official hall ticket download links.' },
+  answer_keys: { title: 'Answer Keys 2026 - SSC, UPSC, Railway, Banking Exam Answer Key Download', desc: 'Download answer keys 2026 for SSC CGL, UPSC Prelims, IBPS PO, RRB NTPC, CTET & all government exams. Check official answer key PDF with question paper solutions.' },
+  private_jobs: { title: 'Private Jobs 2026 - Latest Private Sector Job Vacancies in India', desc: 'Find latest private jobs 2026 in India - IT, BPO, finance, engineering, healthcare, sales & more. Daily updated private sector job vacancies with apply links.' },
+  remote_jobs: { title: 'Remote Jobs 2026 - Work From Home Jobs in India', desc: 'Find latest remote jobs 2026 in India - work from home opportunities in IT, customer service, content writing, design, sales & more. Apply online for WFH jobs.' },
+};
 
 export default function SEO({
   title,
@@ -14,10 +23,13 @@ export default function SEO({
   breadcrumbs,
   jobs,
   totalJobs,
+  activeTab,
 }) {
-  const pageTitle = title ? `${title} | ${siteName}` : defaultTitle;
-  const desc = description || defaultDescription;
-  const url = canonical || siteUrl;
+  const tabMetaData = activeTab ? tabMeta[activeTab] : null;
+  const pageTitle = title || tabMetaData?.title || defaultTitle;
+  const fullTitle = pageTitle.includes(siteName) ? pageTitle : `${pageTitle} | ${siteName}`;
+  const desc = description || tabMetaData?.desc || defaultDescription;
+  const url = canonical ? `${siteUrl}${canonical}` : siteUrl;
   const image = ogImage || `${siteUrl}/api/og`;
 
   const breadcrumbJson = breadcrumbs?.length ? {
@@ -40,7 +52,6 @@ export default function SEO({
     about: 'Government jobs in India, Sarkari naukri, SSC CGL, SSC CHSL, UPSC, banking jobs, railway recruitment, RRB NTPC, police recruitment, admit cards, answer keys, Sarkari results, teaching jobs, defence jobs',
     keywords: 'government jobs, sarkari naukri, ssc cgl, ssc chsl, upsc, ibps po, rrb ntpc, railway jobs, banking jobs, police jobs, defence jobs, teaching jobs, ctet, state government jobs, psu jobs, admit card, answer key, sarkari result, india gov jobs',
     inLanguage: 'hi-IN',
-    audience: { '@type': 'Audience', audienceType: 'Government job aspirants in India' },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -60,11 +71,6 @@ export default function SEO({
     description: defaultDescription,
     foundingDate: '2024',
     areaServed: 'India',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'customer support',
-      url: siteUrl,
-    },
     sameAs: [
       'https://twitter.com/govtjobsindia',
       'https://t.me/govtjobsindia',
@@ -108,66 +114,42 @@ export default function SEO({
       {
         '@type': 'Question',
         name: 'What is GovtJobsIndia.online?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'GovtJobsIndia.online is India\'s #1 platform for government job notifications, Sarkari results, admit cards, and answer keys. We aggregate job openings from central and state government departments including SSC, UPSC, banking, railway, defence, teaching, and state PSC exams.',
-        },
+        acceptedAnswer: { '@type': 'Answer', text: "GovtJobsIndia.online is India's #1 platform for government job notifications, Sarkari results, admit cards, and answer keys. We aggregate job openings from central and state government departments including SSC, UPSC, banking, railway, defence, teaching, and state PSC exams." },
       },
       {
         '@type': 'Question',
         name: `How many jobs are listed on GovtJobsIndia.online?`,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `We currently have ${totalJobs}+ active job listings across all categories including latest jobs, results, admit cards, answer keys, private jobs, and remote jobs from various government departments.`,
-        },
+        acceptedAnswer: { '@type': 'Answer', text: `We currently have ${totalJobs}+ active job listings across all categories including latest jobs, results, admit cards, answer keys, private jobs, and remote jobs from various government departments.` },
       },
       {
         '@type': 'Question',
         name: 'How can I apply for SSC CGL 2026?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'To apply for SSC CGL 2026, visit the official SSC website at ssc.nic.in when the notification is released. You can also find direct application links, eligibility criteria, exam pattern, and last date reminders on GovtJobsIndia.online.',
-        },
+        acceptedAnswer: { '@type': 'Answer', text: 'To apply for SSC CGL 2026, visit the official SSC website at ssc.nic.in when the notification is released. You can also find direct application links, eligibility criteria, exam pattern, and last date reminders on GovtJobsIndia.online.' },
       },
       {
         '@type': 'Question',
         name: 'How to download UPSC admit card 2026?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'UPSC admit cards are released on the official UPSC website at upsc.gov.in. We provide direct download links for UPSC Civil Services, NDA, CDS, CAPF, and other UPSC exam hall tickets on our admit cards page.',
-        },
+        acceptedAnswer: { '@type': 'Answer', text: 'UPSC admit cards are released on the official UPSC website at upsc.gov.in. We provide direct download links for UPSC Civil Services, NDA, CDS, CAPF, and other UPSC exam hall tickets on our admit cards page.' },
       },
       {
         '@type': 'Question',
         name: 'Where can I check Sarkari result 2026?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'You can check all Sarkari results 2026 on GovtJobsIndia.online. We provide direct result links for SSC, UPSC, railway, banking, state PSC, and all other government exam results as soon as they are announced.',
-        },
+        acceptedAnswer: { '@type': 'Answer', text: 'You can check all Sarkari results 2026 on GovtJobsIndia.online. We provide direct result links for SSC, UPSC, railway, banking, state PSC, and all other government exam results as soon as they are announced.' },
       },
       {
         '@type': 'Question',
         name: 'How to fill SSC exam form online?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'SSC exam forms can be filled online at ssc.nic.in. We provide step-by-step guidance, direct application links, fee details, and last date reminders for SSC CGL, CHSL, GD Constable, MTS, CPO, JE, and all SSC recruitment exams.',
-        },
+        acceptedAnswer: { '@type': 'Answer', text: 'SSC exam forms can be filled online at ssc.nic.in. We provide step-by-step guidance, direct application links, fee details, and last date reminders for SSC CGL, CHSL, GD Constable, MTS, CPO, JE, and all SSC recruitment exams.' },
       },
       {
         '@type': 'Question',
         name: 'Is GovtJobsIndia.online free to use?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, GovtJobsIndia.online is completely free. You can browse all job listings, check results, download admit cards and answer keys without any charges. We also provide free instant alerts on WhatsApp and Telegram.',
-        },
+        acceptedAnswer: { '@type': 'Answer', text: 'Yes, GovtJobsIndia.online is completely free. You can browse all job listings, check results, download admit cards and answer keys without any charges. We also provide free instant alerts on WhatsApp and Telegram.' },
       },
       {
         '@type': 'Question',
         name: 'How often are jobs updated on GovtJobsIndia.online?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Our job listings are updated daily with the latest government vacancies, results, and admit card releases from various central and state government departments across India.',
-        },
+        acceptedAnswer: { '@type': 'Answer', text: 'Our job listings are updated daily with the latest government vacancies, results, and admit card releases from various central and state government departments across India.' },
       },
     ],
   } : null;
@@ -176,9 +158,9 @@ export default function SEO({
 
   return (
     <Helmet>
-      <title>{pageTitle}</title>
+      <title>{fullTitle}</title>
       <meta name="description" content={desc} />
-      <meta name="title" content={pageTitle} />
+      <meta name="title" content={fullTitle} />
       <meta name="keywords" content="government jobs 2026, sarkari naukri, ssc cgl, ssc chsl, ssc gd constable, ssc mts, ssc cpo, upsc civil services, upsc nda, upsc cds, ibps po, ibps clerk, ibps rrb, sbi po, sbi clerk, rbi grade b, rbi assistant, rrb ntpc, rrb group d, rrb alp, railway jobs, banking jobs, defence jobs, teaching jobs, ctet, uptet, dsssb, kvs, nvs, police recruitment, up police, delhi police, crpf, bsf, central government jobs, state government jobs, psu jobs, ongc, iocl, ntpc, coal india, admit card 2026, answer key 2026, sarkari result, latest govt jobs, exam form fill online, ssc form, upsc application, india government jobs, 10th pass government jobs, 12th pass government jobs, graduate government jobs, engineering jobs, diploma jobs, iti jobs" />
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
       <meta name="revisit-after" content="1 day" />
@@ -186,10 +168,9 @@ export default function SEO({
       <meta name="author" content={siteName} />
       <meta name="geo.region" content="IN" />
       <meta name="geo.placename" content="India" />
-      <meta name="referrer" content="strict-origin-when-cross-origin" />
       <link rel="canonical" href={url} />
 
-      <meta property="og:title" content={pageTitle} />
+      <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={desc} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={ogType} />
@@ -197,11 +178,11 @@ export default function SEO({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:alt" content={pageTitle} />
+      <meta property="og:image:alt" content={fullTitle} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="hi_IN" />
 
-      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={image} />
       <meta name="twitter:image:alt" content={desc} />

@@ -1,22 +1,33 @@
-import { useState, useMemo, useCallback } from 'react';
-import SEO from './components/SEO';
+import { useState, useEffect, useMemo } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import StatsSection from './components/StatsSection';
-import CategoryTabs from './components/CategoryTabs';
-import Breadcrumbs from './components/Breadcrumbs';
-import { CTASectionMid } from './components/CTASection';
-import GovtInfoSection from './components/GovtInfoSection';
 import Footer from './components/Footer';
+import ProgressBar from './components/ProgressBar';
 import { useFetchJobs } from './hooks/useFetchJobs';
+import HomePage from './pages/HomePage';
+import JobsPage from './pages/JobsPage';
 
-function App() {
-  const { data, loading, error, refetch } = useFetchJobs();
+function ScrollToTab() {
+  const location = useLocation();
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get('tab');
+    if (tab) {
+      setTimeout(() => {
+        document.querySelector('#jobs')?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  }, [location.search]);
+  return null;
+}
+
+function AppContent() {
+  const { data, loading, error, progress, refetch } = useFetchJobs();
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeTab, setActiveTab] = useState('latest_jobs');
+  const location = useLocation();
 
-  const searchResults = useMemo(() => {
-    if (!searchQuery.trim() || !data) return null;
+  const filteredData = useMemo(() => {
+    if (!searchQuery.trim() || !data) return data;
     const q = searchQuery.toLowerCase().trim();
     const r = {};
     Object.entries(data).forEach(([key, items]) => {
@@ -29,67 +40,48 @@ function App() {
         if (f.length) r[key] = f;
       }
     });
-    return Object.keys(r).length ? r : {};
+    return Object.keys(r).length ? r : data;
   }, [searchQuery, data]);
-
-  const handleNavClick = useCallback((href, tab) => {
-    if (tab) setActiveTab(tab);
-  }, []);
-
-  const totalCount = useMemo(() => {
-    if (!data) return 0;
-    return Object.values(data).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0);
-  }, [data]);
-
-  const allJobs = useMemo(() => {
-    if (!data) return [];
-    const flat = [];
-    Object.values(data).forEach(arr => { if (Array.isArray(arr)) flat.push(...arr); });
-    return flat;
-  }, [data]);
-
-  const tabLabels = {
-    latest_jobs: 'Latest Jobs',
-    results: 'Results',
-    admit_cards: 'Admit Cards',
-    answer_keys: 'Answer Keys',
-    private_jobs: 'Private Jobs',
-    remote_jobs: 'Remote Jobs',
-  };
-
-  const breadcrumbItems = [{ label: tabLabels[activeTab] || 'Home' }];
 
   return (
     <>
-      <SEO
-        breadcrumbs={[{ name: 'Home', path: '/' }, { name: tabLabels[activeTab], path: `/#${activeTab}` }]}
-        jobs={allJobs}
-        totalJobs={totalCount}
-      />
-
-      <div className="min-h-screen bg-surface">
-        <Navbar onNavClick={handleNavClick} />
-        <main id="main-content" role="main">
-          <Breadcrumbs items={breadcrumbItems} />
-          <HeroSection data={data} onNavClick={handleNavClick} />
-          <StatsSection data={data} />
-          <CTASectionMid />
-          <CategoryTabs
-            data={searchResults || data}
-            loading={loading}
-            error={error}
-            onRetry={refetch}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-          />
-          <GovtInfoSection />
-        </main>
-        <Footer />
-      </div>
+      <ProgressBar progress={progress} />
+      <Navbar />
+      <main id="main-content" role="main">
+        <Routes>
+          <Route path="/" element={
+            <HomePage
+              data={filteredData}
+              rawData={data}
+              loading={loading}
+              error={error}
+              onRetry={refetch}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+            />
+          } />
+          <Route path="/jobs/:category" element={
+            <JobsPage
+              data={filteredData}
+              loading={loading}
+              error={error}
+              onRetry={refetch}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+            />
+          } />
+        </Routes>
+      </main>
+      <Footer />
     </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTab />
+      <AppContent />
+    </BrowserRouter>
+  );
+}
