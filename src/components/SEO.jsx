@@ -18,7 +18,7 @@ export default function SEO({
   const pageTitle = title ? `${title} | ${siteName}` : defaultTitle;
   const desc = description || defaultDescription;
   const url = canonical || siteUrl;
-  const image = ogImage || `${siteUrl}/og-image.svg`;
+  const image = ogImage || `${siteUrl}/api/og`;
 
   const breadcrumbJson = breadcrumbs?.length ? {
     '@context': 'https://schema.org',
