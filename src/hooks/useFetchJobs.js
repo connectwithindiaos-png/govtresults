@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const API_URL = 'https://abhishek-kd-43.github.io/jobs/data.json';
+const DIRECT_URL = 'https://abhishek-kd-43.github.io/jobs/data.json';
+const PROXY_FALLBACK = 'https://corsproxy.io/?' + DIRECT_URL;
+
+function getPrimaryUrl() {
+  return import.meta.env.DEV ? DIRECT_URL : '/api/jobs';
+}
 
 export function useFetchJobs() {
   const [data, setData] = useState(null);
@@ -10,16 +15,28 @@ export function useFetchJobs() {
   const fetchData = async () => {
     setLoading(true);
     setError(null);
-    try {
-      const res = await fetch(API_URL);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      setData(json);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+
+    const urlsToTry = [getPrimaryUrl()];
+    if (!import.meta.env.DEV) urlsToTry.push(DIRECT_URL);
+    urlsToTry.push(PROXY_FALLBACK);
+
+    for (const url of urlsToTry) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (json && typeof json === 'object' && Object.keys(json).length) {
+          setData(json);
+          setLoading(false);
+          return;
+        }
+      } catch {
+        // try next URL
+      }
     }
+
+    setError('Failed to load job data. Please try again.');
+    setLoading(false);
   };
 
   useEffect(() => {
