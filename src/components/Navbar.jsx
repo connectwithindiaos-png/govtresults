@@ -21,6 +21,9 @@ export default function Navbar({ onNavClick }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+
+  
+
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
