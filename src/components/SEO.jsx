@@ -186,6 +186,7 @@ export default function SEO({
       <meta name="author" content={siteName} />
       <meta name="geo.region" content="IN" />
       <meta name="geo.placename" content="India" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" />
       <link rel="canonical" href={url} />
 
       <meta property="og:title" content={pageTitle} />
@@ -193,12 +194,17 @@ export default function SEO({
       <meta property="og:url" content={url} />
       <meta property="og:type" content={ogType} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:alt" content={pageTitle} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="hi_IN" />
 
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:image:alt" content={desc} />
       <meta name="twitter:card" content="summary_large_image" />
 
       {schemas.map((schema, i) => (
