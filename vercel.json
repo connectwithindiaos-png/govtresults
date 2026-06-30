@@ -1,6 +1,20 @@
 {
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/(.*)" },
+    { "source": "/jobs/latest-jobs", "destination": "/jobs/latest-jobs/index.html" },
+    { "source": "/jobs/results", "destination": "/jobs/results/index.html" },
+    { "source": "/jobs/admit-cards", "destination": "/jobs/admit-cards/index.html" },
+    { "source": "/jobs/answer-keys", "destination": "/jobs/answer-keys/index.html" },
+    { "source": "/jobs/private-jobs", "destination": "/jobs/private-jobs/index.html" },
+    { "source": "/jobs/remote-jobs", "destination": "/jobs/remote-jobs/index.html" },
+    { "source": "/ssc-cgl-2026", "destination": "/ssc-cgl-2026/index.html" },
+    { "source": "/rrb-technician-2026", "destination": "/rrb-technician-2026/index.html" },
+    { "source": "/upsc-recruitment-2026", "destination": "/upsc-recruitment-2026/index.html" },
+    { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/terms", "destination": "/terms/index.html" },
+    { "source": "/disclaimer", "destination": "/disclaimer/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
