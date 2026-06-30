@@ -123,23 +123,23 @@ export default function SEO({
       },
       {
         '@type': 'Question',
-        name: 'How can I apply for SSC CGL 2026?',
-        acceptedAnswer: { '@type': 'Answer', text: 'To apply for SSC CGL 2026, visit the official SSC website at ssc.nic.in when the notification is released. You can also find direct application links, eligibility criteria, exam pattern, and last date reminders on GovtJobsIndia.online.' },
+        name: 'How to apply for SSC CGL 2026?',
+        acceptedAnswer: { '@type': 'Answer', text: 'SSC CGL 2026 notification is out with 12,256 vacancies. The correction window is open from June 29 to July 1, 2026. Apply online at ssc.nic.in. Find direct links, eligibility, exam pattern, and last date reminders on GovtJobsIndia.online.' },
       },
       {
         '@type': 'Question',
-        name: 'How to download UPSC admit card 2026?',
-        acceptedAnswer: { '@type': 'Answer', text: 'UPSC admit cards are released on the official UPSC website at upsc.gov.in. We provide direct download links for UPSC Civil Services, NDA, CDS, CAPF, and other UPSC exam hall tickets on our admit cards page.' },
+        name: 'What is RRB Technician 2026 recruitment?',
+        acceptedAnswer: { '@type': 'Answer', text: 'RRB Technician 2026 notification (CEN 02/2026) was released on June 29, 2026 with 6,557 vacancies for Technician Grade I Signal and Technician Grade III posts. Applications start June 30, 2026 at rrb.apply.gov.in.' },
       },
       {
         '@type': 'Question',
-        name: 'Where can I check Sarkari result 2026?',
-        acceptedAnswer: { '@type': 'Answer', text: 'You can check all Sarkari results 2026 on GovtJobsIndia.online. We provide direct result links for SSC, UPSC, railway, banking, state PSC, and all other government exam results as soon as they are announced.' },
+        name: 'How to apply for UPSC recruitment 2026?',
+        acceptedAnswer: { '@type': 'Answer', text: 'UPSC Recruitment 2026 Advertisement No. 06/2026 has 538 vacancies across 98 posts. Last date is July 3, 2026. Apply at upsconline.nic.in for Specialist Grade III, Assistant Professor, Scientist, and other posts.' },
       },
       {
         '@type': 'Question',
         name: 'How to fill SSC exam form online?',
-        acceptedAnswer: { '@type': 'Answer', text: 'SSC exam forms can be filled online at ssc.nic.in. We provide step-by-step guidance, direct application links, fee details, and last date reminders for SSC CGL, CHSL, GD Constable, MTS, CPO, JE, and all SSC recruitment exams.' },
+        acceptedAnswer: { '@type': 'Answer', text: 'SSC exam forms can be filled online at ssc.nic.in. Currently SSC CGL 2026 (12,256 vacancies) and SSC ASO LDCE 2026 (341 vacancies) applications are open. Get direct links and step-by-step guidance on GovtJobsIndia.online.' },
       },
       {
         '@type': 'Question',

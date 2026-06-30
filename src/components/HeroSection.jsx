@@ -20,6 +20,13 @@ export default function HeroSection({ data, searchQuery, onSearchChange }) {
             </h1>
           </div>
 
+          <div className="bg-red-50 border border-red-200 px-2.5 py-1.5 mb-2.5">
+            <span className="tag-new text-[11px] mr-1.5">New</span>
+            <span className="text-[12px] text-gray-800 font-semibold">RRB Technician 2026:</span>
+            <span className="text-[12px] text-gray-600"> 6,557 vacancies — Apply from today!</span>
+            <Link to="/jobs/latest-jobs?q=RRB+Technician" className="text-[#00C] text-[11px] font-semibold ml-1.5">Apply Now &rarr;</Link>
+          </div>
+
           <div className="text-[12px] text-gray-600 mb-2.5">
             <b className="text-gray-900">{govtJobs.length}+</b> Latest Jobs &nbsp;
             <b className="text-gray-900">{results.length}+</b> Results &nbsp;
@@ -96,10 +103,10 @@ export default function HeroSection({ data, searchQuery, onSearchChange }) {
               <div className="p-2.5">
                 <div className="flex flex-wrap gap-x-3 gap-y-1">
                   {[
-                    'SSC CGL 2026', 'SSC CHSL 2026', 'UPSC Civil Services',
-                    'UPSC NDA 2026', 'IBPS PO 2026', 'SBI Clerk 2026',
-                    'RRB NTPC 2026', 'RRB Group D 2026', 'CTET 2026',
-                    'Indian Army Soldier', 'UP Police Constable', 'BPSC 2026',
+                    'SSC CGL 2026', 'RRB Technician 2026', 'UPSC Recruitment 2026',
+                    'UPSC NDA-II 2026', 'IBPS PO 2026', 'SBI Apprentice 2026',
+                    'RRB ALP 2026', 'UPSC CDS-II 2026', 'CTET 2026',
+                    'Indian Army Soldier', 'SSC ASO LDCE 2026', 'AFCAT 2026',
                   ].map((exam) => (
                     <Link key={exam} to={`/jobs/latest-jobs?q=${encodeURIComponent(exam)}`}
                       className="text-[#00C] text-[11px]"
