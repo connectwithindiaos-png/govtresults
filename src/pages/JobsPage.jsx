@@ -78,7 +78,7 @@ export default function JobsPage({ data, loading, error, onRetry, searchQuery, o
         searchQuery={searchQuery}
         onSearchChange={onSearchChange}
       />
-      <GovtInfoSection />
+      <GovtInfoSection category={resolvedTab} />
     </>
   );
 }
