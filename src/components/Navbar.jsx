@@ -12,14 +12,14 @@ const navLinks = [
 ];
 
 const quickLinks = [
-  { label: 'SSC', href: '/jobs/latest-jobs?q=SSC' },
-  { label: 'UPSC', href: '/jobs/latest-jobs?q=UPSC' },
-  { label: 'Railway', href: '/jobs/latest-jobs?q=Railway' },
-  { label: 'Banking', href: '/jobs/latest-jobs?q=Bank' },
-  { label: 'Police', href: '/jobs/latest-jobs?q=Police' },
-  { label: 'Syllabus', href: '/jobs/latest-jobs?q=syllabus' },
-  { label: 'Previous Papers', href: '/jobs/latest-jobs?q=papers' },
-  { label: 'Exam Calendar', href: '/jobs/latest-jobs' },
+  { label: 'SSC CGL 2026', href: '/ssc-cgl-2026' },
+  { label: 'RRB Technician', href: '/rrb-technician-2026' },
+  { label: 'UPSC Recruitment', href: '/upsc-recruitment-2026' },
+  { label: 'Railway Jobs', href: '/jobs/latest-jobs?q=Railway' },
+  { label: 'Banking Jobs', href: '/jobs/latest-jobs?q=Bank' },
+  { label: 'Police Jobs', href: '/jobs/latest-jobs?q=Police' },
+  { label: 'Govt Results', href: '/jobs/results' },
+  { label: 'Admit Cards', href: '/jobs/admit-cards' },
 ];
 
 export default function Navbar() {

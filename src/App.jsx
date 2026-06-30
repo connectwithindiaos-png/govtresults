@@ -6,6 +6,8 @@ import ProgressBar from './components/ProgressBar';
 import { useFetchJobs } from './hooks/useFetchJobs';
 import HomePage from './pages/HomePage';
 import JobsPage from './pages/JobsPage';
+import ExamPage from './pages/ExamPage';
+import StaticPage from './pages/StaticPage';
 
 function NotFound() {
   return (
@@ -81,6 +83,14 @@ function AppContent() {
               onSearchChange={setSearchQuery}
             />
           } />
+          <Route path="/ssc-cgl-2026" element={<ExamPage />} />
+          <Route path="/rrb-technician-2026" element={<ExamPage />} />
+          <Route path="/upsc-recruitment-2026" element={<ExamPage />} />
+          <Route path="/about" element={<StaticPage />} />
+          <Route path="/contact" element={<StaticPage />} />
+          <Route path="/privacy" element={<StaticPage />} />
+          <Route path="/terms" element={<StaticPage />} />
+          <Route path="/disclaimer" element={<StaticPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

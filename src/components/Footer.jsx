@@ -11,11 +11,11 @@ const quickLinks = [
 ];
 
 const resources = [
-  { label: 'Latest Jobs', href: '/jobs/latest-jobs' },
+  { label: 'SSC CGL 2026', href: '/ssc-cgl-2026' },
+  { label: 'RRB Technician 2026', href: '/rrb-technician-2026' },
+  { label: 'UPSC Recruitment 2026', href: '/upsc-recruitment-2026' },
   { label: 'Download Admit Card', href: '/jobs/admit-cards' },
   { label: 'Check Result', href: '/jobs/results' },
-  { label: 'Syllabus & Pattern', href: '/jobs/latest-jobs?q=syllabus' },
-  { label: 'Previous Papers', href: '/jobs/latest-jobs?q=papers' },
   { label: 'Answer Key Download', href: '/jobs/answer-keys' },
 ];
 
